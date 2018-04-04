@@ -42,8 +42,6 @@ class Twitter
     {
         $this->_consumerKey = 'Enter your consumer key here';
         $this->_consumerSecret = 'Enter your consumer secret here';
-        $this->_oAuthToken = 'Enter your access token here';
-        $this->_oAuthSecret = 'Enter your access token secret here';
         $this->_oAuthNonce = $this->generateNonce();
         $this->_oAuthSignature = '';
         $this->_oAuthSignatureMethod = 'HMAC-SHA1';
@@ -244,9 +242,11 @@ class Twitter
      * 
      * @return Returns the response from Twitter.  Either XML or JSON
      */
-    function request($httpMethod, $baseUrl, $aRequestParams = array())
+    function request($oAuthToken,$oAuthSecret,$httpMethod, $baseUrl, $aRequestParams = array())
     {
         //Set the httpMethod and base URL for this request
+        $this->_oAuthToken = $oAuthToken;
+        $this->_oAuthSecret = $oAuthSecret;
         $this->_httpMethod = $httpMethod;
         $this->_baseUrl = $baseUrl;
         $this->_requestFormat = $this->getRequestFormat();
