@@ -37,7 +37,9 @@ class Twitterexamples extends CI_Controller
      */
     function sendTweet()
     {
-        $response = $this->twitter->request('POST', 'http://api.twitter.com/1.1/statuses/update.json', array('include_entities' => 'true', 'status' => 'I want cookies'));
+        $this->twitter->request('User Token Here','User Token Secret here','POST','https://api.twitter.com/1.1/statuses/update.json', 
+                                                                array('include_entities' => 'true', 
+                                                                'status' => "Horray!! It works"));
     }
     
     /*
@@ -49,7 +51,7 @@ class Twitterexamples extends CI_Controller
      */
     function getTweets()
     {
-        $response = $this->twitter->request('GET', 'http://api.twitter.com/1.1/statuses/user_timeline.json', array('include_entities' => 'true'));
+        $response = $this->twitter->request('User Token Here','User Token Secret here','GET', 'http://api.twitter.com/1.1/statuses/user_timeline.json', array('include_entities' => 'true'));
     }
 
     /*
@@ -61,7 +63,7 @@ class Twitterexamples extends CI_Controller
      */
     function sendDirectMessage()
     {
-        $response = $this->twitter->request('POST', 'https://api.twitter.com/1.1/direct_messages/new.json', array('include_entities' => 'true', 'screen_name' => 'chrispattle', 'text' => 'Can you give me cookies?'));
+        $response = $this->twitter->request('User Token Here','User Token Secret here','POST', 'https://api.twitter.com/1.1/direct_messages/new.json', array('include_entities' => 'true', 'screen_name' => 'chrispattle', 'text' => 'Can you give me cookies?'));
     }
     
     /*
@@ -73,7 +75,7 @@ class Twitterexamples extends CI_Controller
      */
     function getDirectMessages()
     {        
-        $response = $this->twitter->request('GET', 'https://api.twitter.com/1.1/direct_messages.json', array('count' => '5'));
+        $response = $this->twitter->request('User Token Here','User Token Secret here','GET', 'https://api.twitter.com/1.1/direct_messages.json', array('count' => '5'));
     }
 }
 
